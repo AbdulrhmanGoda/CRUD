@@ -1,0 +1,314 @@
+:root{
+    
+    --darkbg: #333;
+    --darksbg: #111;
+    --darktbg: #000;
+    --lightcolor: #fff;
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body.activebody{ 
+    --darkbg: #fff;
+    --darksbg: #ddd;
+    --darktbg: #eee;
+    --lightcolor: #222;
+}
+body{
+    background-color: var(--darkbg);
+    font-family: system-ui;
+}
+input, button{
+    width: 99.5%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: var(--darksbg);
+    margin: 5px 0;
+    border-radius: 3px;
+    padding: 5px;
+    color: var(--lightcolor);
+    caret-color: #85027a;
+    font-size: 18px;
+}
+input{
+    width: 99%;
+}
+button{
+    background-color: #85027a;
+    color: #fff;
+    border-radius: 10px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 18px;
+}
+input:focus{
+    background-color: var(--darktbg);
+}
+button:hover{
+    background-color: #990e8d;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+/*  */
+.option{
+    position: fixed;
+    top: 20px;
+    right: -220px;
+    width: 200px;
+    z-index: 100;
+    background-color: #ddd;
+    color: var(#85027a);
+    margin: 20px auto;
+    padding: 20px 20px 20px 50px;
+    border-radius: 20px;
+}
+.option i::before,
+.option i::after{
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #85027a transparent transparent;
+    top:25px;
+    left: 10px;
+    cursor: pointer;
+}
+.option i::after{
+    animation: rightLeft 2s linear infinite;
+}
+.option i::after{
+    left: 20px;
+}
+@keyframes rightLeft{
+    0%, 100%{
+        left: 10px;
+    }
+    50%{
+        left: 20px;
+    }
+}
+.option.optionActive{
+    right: 15px;
+    transition: 0.3s;
+}
+.option.optionActive i::after,
+.option.optionActive i::before{
+    border-color: transparent transparent transparent #85027a;
+}
+.option.optionActive i::after{
+    animation: none;
+}
+.option.optionActive i::before{
+    animation: rightLeft 2s linear infinite;
+}
+
+.option .themes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.option .themes span{
+    font-size: 20px;
+    position: relative;
+    color: #333;
+    font-weight: bold;
+}
+.option .themes span:nth-child(2){
+    background-color: #777;
+    width: 60px;
+    height: 25px;
+    border-radius: 50px;
+    margin: 0 10px;
+}
+.option .themes .toggler::before{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    left:35px;
+    transition: 0.2s linear;
+}
+.option .themes .toggler.activetheme::before{
+    left: 5px;
+}
+/*  */
+.crud{
+    width: 70%;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+}
+.crud .head{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0;
+    color: var(--lightcolor);
+}
+.crud .head h2{
+    font-size: 40px;
+    margin: 5px 0;
+}
+.crud .head p{
+    font-size: 22px;
+    margin: 5px 0;
+}
+/*  */
+.crud .input .price{
+    margin: 5px auto;
+}
+.crud .input .price input{
+    width: 19%;
+}
+.crud .input .price span{
+    background-color: #85027a;
+    padding: 12px 10px;
+    margin: 5px 20px;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    max-width: 19%;
+}
+.crud .input .price span::before{
+    content: "Total: ";
+}
+/*  */
+.crud .output .btnSearch{
+    display: flex;
+    justify-content: space-around;
+}
+.crud .output .btnSearch button{
+    width: 48%;
+}
+table{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--lightcolor);
+}
+table th, table td{
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+table tr.activeTr{
+    background-color: yellow;
+    color: #000;
+}
+table button:hover{
+    letter-spacing: 0;
+}
+
+@media(max-width:1180px){
+    .crud{
+        width: 80% !important;
+    }
+}
+@media(max-width: 1030px){
+    .crud{
+        width: 90% !important;
+    }
+    .crud .input .price{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 10px auto;
+    }
+    .crud .input .price input, .crud .input .price span{
+        width: 48%;
+        margin: 5px auto;
+    }
+    .crud .input .price span{
+        height: 30px;
+    }
+}
+@media(max-width: 775px){
+    .crud{
+        width: 95% !important;
+    }
+    .crud .input .price input, .crud .input .price span{
+        width: 99.5%;
+        margin: 5px auto;
+        height: 15px;
+    }
+    .crud .input .price span{
+        height: 10px;
+        line-height: 10px;
+    }
+    table th, table td {
+        font-size: 8px;
+    }
+    table th, table td button{
+        font-size: 7px;
+    }
+    button{
+        border-radius: 5px;
+        height: 20px;
+        font-size: 10px;
+    }
+    input{
+        border-radius: 5px;
+        height: 10px;
+        font-size: 10px;
+    }
+    .option{
+        top: 10px;
+        right: -120px;
+        width: 110px;
+        padding: 5px 5px 5px 30px;
+    }
+    .option.optionActive{
+        right: 5px;
+    }
+    .option i::before,
+    .option i::after{
+        border-width: 7px;
+        top:50%;
+        transform: translateY(-50%);
+        left: 0;
+    }
+    .option i::after{
+        left: 5px;
+        animation: rightLeft 1s linear infinite;
+    }
+    .option.optionActive i::after{
+        left: 10px;
+    }
+    .option.optionActive i::before{
+        left: 5px;
+        animation: rightLeft 2s linear infinite;
+    }
+    @keyframes rightLeft{
+        0%, 100%{
+            left: 5px;
+        }
+        50%{
+            left: 2px;
+        }
+    }
+    .option .themes span{
+        font-size: 12px;
+    }
+    .option .themes span:nth-child(2){
+        width: 30px;
+        height: 15px;
+    }
+    .option .themes .toggler::before{
+        width: 7px;
+        height: 7px;
+        left:20px;
+    }
+    .option .themes .toggler.activetheme::before{
+        left: 5px;
+    }
+}
